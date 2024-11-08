@@ -1,0 +1,53 @@
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+# Configuración del gráfico
+fig, ax = plt.subplots(figsize=(10, 8))
+ax.axis('off')
+
+# Datos para el gráfico
+bloques = [
+    ("8:00-9:00 AM", "Despertar y desayunar", "Mañana"),
+    ("9:00-12:00 PM", "Tareas laborales", "Trabajo"),
+    ("12:00-1:00 PM", "Descanso y alimentación", "Almuerzo"),
+    ("1:00-4:00 PM", "Tareas laborales", "Trabajo"),
+    ("4:00-5:00 PM", "Actividades relajantes", "Descanso"),
+    ("5:00-10:00 PM", "Tareas personales y relajación", "Noche")
+]
+
+prioridades = [
+    ("Urgentes", "Trabajo (40%)"),
+    ("Importantes", "Tareas personales (30%)"),
+    ("No urgentes", "Actividades relajantes (30%)")
+]
+
+estrategias = [
+    "Dividir tareas en bloques pequeños",
+    "Establecer límites entre trabajo y descanso",
+    "Usar técnicas de gestión del tiempo (Pomodoro, Time Blocking)",
+    "Crear un ambiente de trabajo cómodo"
+]
+
+# Dibujar bloques de horario
+y_pos = 0.85
+for bloque in bloques:
+    ax.text(0.1, y_pos, f"{bloque[0]}", fontsize=10, fontweight='bold', ha='left')
+    ax.text(0.25, y_pos, f"{bloque[1]} ({bloque[2]})", fontsize=10, ha='left')
+    y_pos -= 0.1
+
+# Dibujar prioridades de tareas
+ax.text(0.1, y_pos - 0.05, "Priorización de Tareas", fontsize=12, fontweight='bold', ha='left')
+y_pos -= 0.1
+for prioridad in prioridades:
+    ax.text(0.15, y_pos, f"{prioridad[0]}: {prioridad[1]}", fontsize=10, ha='left')
+    y_pos -= 0.05
+
+# Dibujar estrategias para evitar bloqueo
+ax.text(0.1, y_pos - 0.05, "Estrategias para Evitar el Bloqueo", fontsize=12, fontweight='bold', ha='left')
+y_pos -= 0.1
+for estrategia in estrategias:
+    ax.text(0.15, y_pos, f"- {estrategia}", fontsize=10, ha='left')
+    y_pos -= 0.05
+
+# Mostrar gráfico
+plt.show()
